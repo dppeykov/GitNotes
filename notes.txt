@@ -1,7 +1,7 @@
 HOW IT WORKS:
 
- WORKING DIRECTORY  <----------------------->  STAGING AREA <------------------------> LOCAL REPO <----------------------->  REMOTE REPOSITORY 
-(local project dir)   (git add/checkout)        (local pc)     (git commit/checkout)                 (git push/pull)           (GitHub Repo)
+ WORKING DIRECTORY  <----------------------->  STAGING AREA <------------------------> LOCAL REPO (on push creates origin/master)<----------------------->  REMOTE REPOSITORY 
+(local project dir)   (git add/checkout)        (local pc)     (git commit/checkout)                 (git push/pull)                   (GitHub Repo)
 
 NOTE: when doing a project we are working with the working directory directly, not the staging and the repository
 
@@ -90,9 +90,20 @@ We have 3 options how to handle the situation with switching branches with uncom
  -> git checkout the_other_branch - will give an error and abort - we can commit the changes to the current branch and switch after
  -> git checkout the_other_branch - will give an error and abort - if we do it 2 times and not commiting the changes, it will just remove them and switch
  -> git checkout the_other_branch - will give an error and abort - we can STACH the changes
- 
-	Stashing - a place where we can store changes temporally and not include them immediately in the commit - like a drawer to save them for later 
-	It works in a similar way as the commits, as they are a snapshot a change, but they don't have a SHA
+
+Stash changes: 
+
+Stashing - a place where we can store changes temporally and not include them immediately in the commit - like a drawer to save them for later 
+It works in a similar way as the commits, as they are a snapshot of a change, but they don't have SHA value
+Used when we are checking out from a branch with not commited changes in it - gives an error Please commit your changes or stash them before switch branches
+We can stash untrack files as well - git stash -u option -> check the help for that
+The stashes are saved even if we leave the branch and return after a long time - THE STASH IS AVAILABLE FOR ALL BRANCHES
+
+ -> git stash save "name_of_the_stash" -->> it saves the changes into the stash from the working directory and you can switch to another branch
+ -> git stash list -->> view what is in the stash -->> git stash show stash@{0} --> will return what is in the stash like a diff stat -->> for a patch version use: git stash show -p stash@{0} 
+ -> git stash pop -->> retrieves stashed changes - pops a single stash (the newest item) and moves it in the current working directory (branch) 
+ -> git stash apply -->> an alternative to pop -> it leaves the stash and also applies it to the work dir 
+ -> git stash drop stash@{n} -->> deleting the stash at position n -> to clear everything: git stash clear 
 
 Compare branches:
  -> git diff branch..other_branch - compares the 2 branches - we can compare any branch to any other branch - the output will show the branches as a (branch) & b(other_branch)
@@ -150,13 +161,27 @@ in that case git will create another commit after the last commit in the mster, 
 Merge conflicts:
 
 Conflicts occur when there are 2 changes in the same line in 2 different commits - git gets 2 sets of instructions, so it does NOT know what to do - marks the conflict and waits for the user to fix it
+The conflicts will show up in the file in conflict with conflict markers: <<<<<<<HEAD (BEGINNING), ====== (PROBLEM), >>>>>>> (END)
 
+Resolve conflicts:
+
+1. Abort the merge: git merge --abort -->> it goes back before the merge attempts - changes are still in the branch like it was and master is the same as before issuing the merge command
+2. Resolve manually: find the code/text in conflict and correct the problems -->> useful commands git diff --color-words master..branch (to see the difference b/n the 2 branches in color) || git show --color-words
+	-->> find the conflicts, clear them, REMOVE THE MARKERS, git add file_with_conflicts, git commit -> will continue the merge process 
+3. Use the mergetool --> git help mergetool - for help -->> usually the changes are made manually or with a graphical interface, because it is easier
+
+Strategies to reduce conflicts:
+ -> Keep lines short
+ -> Keep commits small and focused 
+ -> Beware stray edits to whitespace (spaces, tabs, line returns)
+ -> Merge often - as much as you can
+ -> Track changes to master - merging master into the branches - pull code from the master to the branches
  
- 
- 
- 
- 
- 
+SET UP A REMOTE:
+
+The remotes work exactly the same as the local repo
+
+
  
  
  
