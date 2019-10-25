@@ -1,0 +1,20 @@
+NAVIGATE THE COMMIT TREE:
+
+Tree-ish --> a directory containig files and other directories -> a commit is considered tree-ish because it refers to a tree at the point when a commit has been applied
+HEAD pointer -> reference of the tip of the current branch
+git log --> shows the where the HEAD is pointing (to which SHA-1) - every commit gets SHA-1 identifier for tracking (40 chars - we need 4 of them to use it)
+git show HEAD --> to see what is in this commit (HEAD = 4+ SHA-1 chars)
+Ancestry:
+ -> commit's parents (HEAD^ OR HEAD~1 (1 parent) = HEAD~) - example: master^ = HEAD~ = the commit before the last in the master branch
+ -> grandparents: HEAD^^ = HEAD~2 - example: git show HEAD^^
+ -> for great-grandparents: HEAD^^^ = HEAD~3 - example: git show HEAD~3
+Tree listings:
+ -> git ls-tree tree-ish --> lists the content of a tree object == ls -a in Lunux - example: git ls-tree HEAD -> lists blobs (binary large object = files) and trees (directories)
+Filter the commit log:
+ -> git log -3 = returns just 3 commits; git log --since=2019-01-01 (after a certain date YMD); git log --until=Y-M-D (before); git log --author="Kevin"; git log --grep"Initial" (using regex);
+ git log SHA-1..HEAD (all the commits from SHA commit to the HEAD - could be another SHA not only th HEAD); git log filename.extension (filter on a filename)
+Format the commit log:
+ -> git log -p (p is for patch) -->> we can see the changes showed what has been removed and addded
+ -> git log --stat -->> showing statistics about the changes
+ -> git log --format=short (oneline|short|medium(default)|full|fuller|email|raw) -> shows the log in a different ways
+ -> git log --graph --> shows a graph of the commits - example: git log --graph --all --oneline --decorate
