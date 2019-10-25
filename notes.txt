@@ -1,8 +1,8 @@
 HOW IT WORKS:
 
- WORKING DIRECTORY  <----------------------->  STAGING AREA <------------------------> LOCAL REPO (on push creates origin/master)<----------------------->  REMOTE REPOSITORY 
-(local project dir)   (git add/checkout)        (local pc)     (git commit/checkout)                 (git push/pull)                   (GitHub Repo)
-
+ WORKING DIRECTORY  <----------------------->  STAGING AREA <------------------------> LOCAL REPO (on push creates origin/master)<------------------------------>  REMOTE REPOSITORY 
+(local project dir)   (git add/checkout)        (local pc)     (git commit/checkout)         (origin/master = tracking)            (git push(fetch+merge)/pull)      (GitHub Repo)
+ 
 NOTE: when doing a project we are working with the working directory directly, not the staging and the repository
 
 
@@ -35,7 +35,39 @@ git reset --> Reset to undo many commits - BE VERY CAREFUL - In that way we can 
 
 .gitignore -> usually a file in the root of the project - used to determine which files need to be ignored and not tracked in the repository
 
+git remote -->> to see the name of the remote - it will point to origin
+git remote -v -->> will show where the origin points to (the remote repo with which the origin will be synced)
+cat .git/config - have the configs
+git remote rm origin -->> to remove the repo (the pointer)
 
+git clone http://... -->> clone a repository (use when we don't have local repo) - it will create a local repo (folder) with all the files - this will clone only the master branch
+
+git branch -u origin/branch rem_branch -->> will track the local branches as well - the -u option tells git to automatically track the repository (-u = set upstream to) - most of the time git is taking care of this
+
+
+Create a new repo on the command line:
+
+echo "read me file" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/... (the repository location)
+git push -u origin master
+
+Push an existing repository:
+
+git remote add origin https://github.com/... (the repository location)
+git push -u origin master  -->> pushes the local master branch to the remote master branch 
+
+Contribute to a project:
+
+Fork the project: GUI
+Clone it to the local machine: git clone http://...
+Create a new branch: git checkout -b new_branch -->> -b will create and move to the branch
+Do the changes you want
+Add, commit and push to the remote: git -am "commit" + git push || git push origin master
+Create a pull request (PR) - GUI - wait for it to be approved and merged to the original project or in case of conflicts, resolve them and then create new PR
+At this point you can delete the branch or continue with other changes
 
 NAVIGATE THE COMMIT TREE:
 
@@ -70,6 +102,8 @@ One working directory - fast context switching between branches
 IMPORTANT: HEAD pointer always points to the last commit in the master branch (assuming 1 branch = master). 
 When we create a branch the HEAD is still pointing to the master, but once we commit to the branch, the HEAD moves and points to the last commit in the branch.
 We can switch back and forth between the master and the brances and the HEAD moves with the switch ALWAYS to the last commit in the branch
+
+ -> git branch -r -->> will show the remote branches --->> -a will show all the branches - local and remote
 
 Creating branches:
  -> git branch -> showing the current branch with * and the rest without
@@ -176,18 +210,53 @@ Strategies to reduce conflicts:
  -> Beware stray edits to whitespace (spaces, tabs, line returns)
  -> Merge often - as much as you can
  -> Track changes to master - merging master into the branches - pull code from the master to the branches
- 
+
 SET UP A REMOTE:
 
-The remotes work exactly the same as the local repo
+The remotes work exactly the same as the local repo - has the HEAD, the commits ...
+On the first push, the local repo creates an additional origin/master branch (copy of the local master). After that, on every push it tries to keep it in sync with the master branch of the remote repo
+If the remote master has changes that are not in the local, we can use fetch to sync the origin/master, but this won't be in the local master - to have it there we need to use merge
+IN FACT GIT DOESN'T COPY ALL THE COMMITS TO THE origin/master - instead it just keep a reference point (a HEAD) to the last synched commit - 
+if the pointer of the remote master is ahead of the local master, on fetch the origin/master syncs (copies the commit locally) and then moves the origin/master to that point. 
+After that we need merge to move the HEAD pointer of the local master to the fetched commit (the place where the origin/master is pointing)
+
+Basically the process is:
+
+1. make commits locally
+2. fetch the lastest code from the remote server
+3. merge the new work into the updated code 
+4. merge with the remote master
+ 
+COLLABORATE WITH A REMOTE:
+
+Pushing code to the remote repo:
+ -> make changes -> add -> commit -> (to see the log: git log --oneline -5 origin/master(tracking branch for the remote branch = local)) -> git push origin master = git push (because usually the tracking is done by git)
+
+Getting code from the remote:
+ -> git fetch -->> will sync the origin/master with remote master, but the master branch stays the same - it just fetches the changes - fetch often - no harm in doing it
+ -> git merge origin/master -->> to merge the fetched changes into the local master -> will do a fast-forward -> the pointer HEAD will be moved to the same place as in the origin/master and remote master
+ -> git fetch + git merge = git pull
+
+Delete a remote branch:
+There are 2 ways to do it:
+1. git push origin :name_of_the_branch -->> old style, used in rare cases
+2. git push origin --delete name_of_the_branch
+ 
+Enable collaborators:
+For local projects (not open source) - go to the settings of the repo and add collaborators
+For open source - fork the project and work with pull requests
+
+Workflow:
+git checkout master
+git fetch
+git merge origin/master
+git checkout - b feedback_form
+git add feedback.html
+git commit -m "Add customer feedback form"
+git fetch
+git push -u origin feedback_form
 
 
- 
- 
- 
- 
- 
- 
  
  
  
