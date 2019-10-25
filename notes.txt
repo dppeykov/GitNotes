@@ -1,3 +1,12 @@
+BASICS:
+
+git help
+git status
+git add -a / git add . --> adds to the staging area
+git commit -m "commit"
+git commit -am "commit" --> we can add and commit in the same time
+git checkout -- <file> --> to discard changes in the working directory
+
 NAVIGATE THE COMMIT TREE:
 
 Tree-ish --> a directory containig files and other directories -> a commit is considered tree-ish because it refers to a tree at the point when a commit has been applied
@@ -18,3 +27,60 @@ Format the commit log:
  -> git log --stat -->> showing statistics about the changes
  -> git log --format=short (oneline|short|medium(default)|full|fuller|email|raw) -> shows the log in a different ways
  -> git log --graph --> shows a graph of the commits - example: git log --graph --all --oneline --decorate
+ 
+BRANCHING:
+
+Useful for: trying new ideas, isolate features or sections of work
+One working directory - fast context switching between branches
+IMPORTANT: HEAD pointer always points to the last commit in the master branch (assuming 1 branch = master). 
+When we create a branch the HEAD is still pointing to the master, but once we commit to the branch, the HEAD moves and points to the last commit in the branch.
+We can switch back and forth between the master and the brances and the HEAD moves with the switch ALWAYS to the last commit in the branch
+Creating branches:
+ -> git branch -> showing the current branch with * and the rest without
+ -> git branch branch_name -> create a branch with name branch_name
+ -> cat .git/HEAD --> to see where the head is pointing (to which branch) - it points to refs/heads/branch_name (branch_name is just a file)
+Switch branches:
+ -> git checkout branch_name --> switching to the branch - the HEAD pointer now points to the branch_name -> when we make a commit it will be moved to the commit in this branch
+Create & Switch brances:
+ -> git checkout -b branch_name = creates the branch and switches to it at the same time
+Switch brances with uncommited changes:
+Cannot switch if changes in working directory conflict, but can switch if the changes can be applied without a conflict or the files are not being tracked (not in the repository)
+We have 3 options how to handle the situation with switching branches with uncommited changes:
+ -> git checkout the_other_branch - will give an error and abort - we can commit the changes to the current branch and switch after
+ -> git checkout the_other_branch - will give an error and abort - if we do it 2 times and not commiting the changes, it will just remove them and switch
+ -> git checkout the_other_branch - will give an error and abort - we can STACH the changes
+Compare branches:
+ -> git diff branch..other_branch - compares the 2 branches - we can compare any branch to any other branch - the output will show the branches as a (branch) & b(other_branch)
+ -> git diff --color-words branch..other_branch - can show the changes on 1 line
+ -> git branch --merged || git branch --no-merged - checking which branches are fully included in the current (has been merged) || which are not part of the current (not merged)
+Rename branches:
+ -> git branch -m old_branch name new_branch_name (git branch --move is the same) - we can only put the new name: git branch -m new_name
+Delete branches:
+ -> git branch -d branch_name - to delete the branch (we need to be outside of the branch to be able to delete it)
+ -> git branch -D branch_name - in case we want to delete a branch that has commits in it, but they are not merged to another branch or the master
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
