@@ -78,13 +78,13 @@
 
 ### Contribute to a project:
 
-Fork the project: GUI
-Clone it to the local machine: git clone http://...
-Create a new branch: git checkout -b new_branch -->> -b will create and move to the branch
-Do the changes you want
-Add, commit and push to the remote: git -am "commit" + git push || git push origin master
-Create a pull request (PR) - GUI - wait for it to be approved and merged to the original project or in case of conflicts, resolve them and then create new PR
-At this point you can delete the branch or continue with other changes
+- Fork the project: GUI
+- Clone it to the local machine: **git clone http://...**
+- Create a new branch: **git checkout -b new_branch** -->> -b will create and move to the branch
+- Do the changes you want
+- Add, commit and push to the remote: **git -am "commit" + git push || git push origin master**
+- Create a pull request (PR) - GUI - wait for it to be approved and merged to the original project or in case of conflicts, resolve them and then create new PR
+- At this point you can delete the branch or continue with other changes
 
 ## NAVIGATE THE COMMIT TREE:
 
