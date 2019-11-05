@@ -2,8 +2,9 @@
 
 ## HOW IT WORKS:
 
- WORKING DIRECTORY  <----------------------->  STAGING AREA <------------------------> LOCAL REPO (on push creates origin/master)<------------------------------>  REMOTE REPOSITORY 
-(local project dir)   (git add/checkout)        (local pc)     (git commit/checkout)         (origin/master = tracking)            (git push(fetch+merge)/pull)      (GitHub Repo)
+**WORKING DIRECTORY** (local project dir)  <----(git add/checkout)---->  **STAGING AREA** (local pc) 
+<----(git commit/checkout)----> **LOCAL REPO** (on push creates origin/master - origin/master = tracking)
+<----(git push(fetch+merge)/pull)---->  **REMOTE REPOSITORY** (GitHub Repo)
  
 NOTE: when doing a project we are working with the working directory directly, not the staging and the repository
 
