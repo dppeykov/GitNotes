@@ -64,17 +64,17 @@
 
 ### Create a new repo on the command line:
 
-`echo "read me file" >> README.md
-git init
-git add README.md
-git commit -m "first commit"
-git remote add origin https://github.com/... (the repository location)
-git push -u origin master**`
+- echo "read me file" >> README.md
+- git init
+- git add README.md
+- git commit -m "first commit"
+- git remote add origin https://github.com/... (the repository location)
+- git push -u origin master**`
 
 ### Push an existing repository:
 
-`git remote add origin https://github.com/... (the repository location)
-git push -u origin master  -->> pushes the local master branch to the remote master branch `
+- git remote add origin https://github.com/... (the repository location)
+- git push -u origin master  -->> pushes the local master branch to the remote master branch 
 
 ### Contribute to a project:
 
