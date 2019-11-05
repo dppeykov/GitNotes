@@ -208,6 +208,16 @@ Once the branch is ready, we need to create a merge to take the branch and bring
 
 > **Real merge (true merge/merge made by the 'recursive' strategy)** - when we **have commits to the master while working on the branch** - in that case git will create **another commit after the last commit in the master**, that **will join both branches** together
 
+![alt text](https://raw.githubusercontent.com/gitforteams/diagrams/master/balsamiq/merge-types.png "FF VS TM")
+
+### Git rebase:
+> Rebase is another way to integrate changes from one branch to another. Rebase compresses all the changes into a single “patch.” Then it integrates the patch onto the target branch. Unlike merging, rebasing flattens the history because it transfers the completed work from one branch to another. In the process, unwanted history is eliminated.
+
+> **git checkout** feature
+> **git rebase** master
+
+![alt text](https://hackernoon.com/hn-images/1*mgyl38slmqmcE4STS56nXA.gif "Git rebase")
+
 ### Merge conflicts:
 
 Conflicts occur when there are 2 changes in the same line in 2 different commits - git gets 2 sets of instructions, so it does NOT know what to do - marks the conflict and waits for the user to fix it
