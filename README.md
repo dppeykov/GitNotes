@@ -204,10 +204,9 @@ Once the branch is ready, we need to create a merge to take the branch and bring
 
 ### Fast-forward VS true merge:
 
--->> Fast-forward - when merging a branch that is ahead of the master - for example we branched off and worked on the branch only, but not on the master - 
-on merge, it will create a new HEAD pointer which will be the point of merging AKA fast-forward
--->> Real merge (true merge/merge made by the 'recursive' strategy) - when we have commits to the master while working on the branch - 
-in that case git will create another commit after the last commit in the mster, that will join both branches together
+> **Fast-forward** - when merging a branch that is **ahead of the master** - for example we branched off and worked on the branch only, but not on the master - on merge, it will create a **new HEAD pointer** which will be the point of merging AKA fast-forward
+
+> **Real merge (true merge/merge made by the 'recursive' strategy)** - when we **have commits to the master while working on the branch** - in that case git will create **another commit after the last commit in the master**, that **will join both branches** together
 
 ### Merge conflicts:
 
