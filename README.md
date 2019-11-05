@@ -2,9 +2,9 @@
 
 ## HOW IT WORKS:
 
-**WORKING DIRECTORY** (local project dir)  <----(git add/checkout)---->  **STAGING AREA** (local pc) 
-<----(git commit/checkout)----> **LOCAL REPO** (on push creates origin/master - origin/master = tracking)
-<----(git push(fetch+merge)/pull)---->  **REMOTE REPOSITORY** (GitHub Repo)
+> **WORKING DIRECTORY** (local project dir)  <----(git add/checkout)---->  **STAGING AREA** (local pc) 
+> <----(git commit/checkout)----> **LOCAL REPO** (on push creates origin/master - origin/master = tracking)
+> <----(git push(fetch+merge)/pull)---->  **REMOTE REPOSITORY** (GitHub Repo)
  
 **NOTE**: *when doing a project we are working with the working directory directly, not the staging and the repository*
 
@@ -23,43 +23,43 @@
 
 > git config --global user.name "user name"
 
-git init --> to initialize a git directory - gets everything ready to start tracking - usually in the root of the project - creates /.git + NOTE: The HEAD is not established after the init
+**git init** --> to initialize a git directory - gets everything ready to start tracking - usually in the root of the project - creates /.git + NOTE: The HEAD is not established after the init
 
-git status
+**git status**
 
-git add -a / git add . --> adds to the staging area
+**git add -a / git add .** --> adds to the staging area
 
-git commit -m "commit" -->> good the message to have short description (less than 50 chars) + \n + more detailed description after (keep each line in less than 72 chars)
+**git commit -m "commit"** -->> good the message to have short description (less than 50 chars) + \n + more detailed description after (keep each line in less than 72 chars)
 
-git commit -am "commit" --> we can add and commit in the same time
+**git commit -am "commit"** --> we can add and commit in the same time
 
-git checkout -- <file> --> to discard changes in the working directory
+**git checkout -- <file>** --> to discard changes in the working directory
 	
-git checkout HEAD -->> to go back to a previous commit - goes to a HEAD detached state
+**git checkout HEAD** -->> to go back to a previous commit - goes to a HEAD detached state
 
-git reset HEAD <file>  -->> clears out the staging environment (unstage)
+**git reset HEAD <file>**  -->> clears out the staging environment (unstage)
 	
-git rm <file> --> to delete a file - moves the deletion in the staging area - to fully delete just commit the change -> git commit
+**git rm <file>** --> to delete a file - moves the deletion in the staging area - to fully delete just commit the change -> git commit
 
-git reset --> Reset to undo many commits - BE VERY CAREFUL - In that way we can move the head to point to whatever commit we want and then start doing new commits from that point
- - soft reset = git reset --soft -->> does not change the staging index or working directory
+**git reset** --> Reset to undo many commits - BE VERY CAREFUL - In that way we can move the head to point to whatever commit we want and then start doing new commits from that point
+ - **soft reset = git reset --soft** -->> does not change the staging index or working directory
     --soft leaves the changes in the most recent state in the working directory and in the staging area
- - mixed = git reset --mixed --> default mode - changes the staging index to match the repository, but does not change the working directory - revert the commited changes
- - hard = git reset --hard --> resets both the staging and the working directory - makes the staging index and the working directory to match the repo where the HEAD is pointing
+ - **mixed = git reset --mixed** --> default mode - changes the staging index to match the repository, but does not change the working directory - revert the commited changes
+ - **hard = git reset --hard** --> resets both the staging and the working directory - makes the staging index and the working directory to match the repo where the HEAD is pointing
 
-.gitignore -> usually a file in the root of the project - used to determine which files need to be ignored and not tracked in the repository
+**.gitignore** -> usually a file in the root of the project - used to determine which files need to be ignored and not tracked in the repository
 
-git remote -->> to see the name of the remote - it will point to origin
+**git remote** -->> to see the name of the remote - it will point to origin
 
-git remote -v -->> will show where the origin points to (the remote repo with which the origin will be synced)
+**git remote -v** -->> will show where the origin points to (the remote repo with which the origin will be synced)
 
-cat .git/config - have the configs
+**cat .git/config** - have the configs
 
-git remote rm origin -->> to remove the repo (the pointer)
+**git remote rm origin** -->> to remove the repo (the pointer)
 
-git clone http://... -->> clone a repository (use when we don't have local repo) - it will create a local repo (folder) with all the files - this will clone only the master branch
+**git clone http://...** -->> clone a repository (use when we don't have local repo) - it will create a local repo (folder) with all the files - this will clone only the master branch
 
-git branch -u origin/branch rem_branch -->> will track the local branches as well - the -u option tells git to automatically track the repository (-u = set upstream to) - most of the time git is taking care of this
+**git branch -u origin/branch rem_branch** -->> will track the local branches as well - the -u option tells git to automatically track the repository (-u = set upstream to) - most of the time git is taking care of this
 
 
 ### Create a new repo on the command line:
