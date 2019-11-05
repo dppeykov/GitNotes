@@ -112,7 +112,7 @@ Format the commit log:
  -> git log --format=short (oneline|short|medium(default)|full|fuller|email|raw) -> shows the log in a different ways
  -> git log --graph --> shows a graph of the commits - example: git log --graph --all --oneline --decorate
  
-BRANCHING:
+## BRANCHING:
 
 Useful for: trying new ideas, isolate features or sections of work
 One working directory - fast context switching between branches
@@ -122,18 +122,18 @@ We can switch back and forth between the master and the brances and the HEAD mov
 
  -> git branch -r -->> will show the remote branches --->> -a will show all the branches - local and remote
 
-Creating branches:
+### Creating branches:
  -> git branch -> showing the current branch with * and the rest without
  -> git branch branch_name -> create a branch with name branch_name
  -> cat .git/HEAD --> to see where the head is pointing (to which branch) - it points to refs/heads/branch_name (branch_name is just a file)
  
-Switch branches:
+### Switch branches:
  -> git checkout branch_name --> switching to the branch - the HEAD pointer now points to the branch_name -> when we make a commit it will be moved to the commit in this branch
  
-Create & Switch brances:
+### Create & Switch brances:
  -> git checkout -b branch_name = creates the branch and switches to it at the same time
  
-Switch brances with uncommited changes:
+### Switch brances with uncommited changes:
 
 Cannot switch if changes in working directory conflict, but can switch if the changes can be applied without a conflict or the files are not being tracked (not in the repository)
 
@@ -142,7 +142,7 @@ We have 3 options how to handle the situation with switching branches with uncom
  -> git checkout the_other_branch - will give an error and abort - if we do it 2 times and not commiting the changes, it will just remove them and switch
  -> git checkout the_other_branch - will give an error and abort - we can STACH the changes
 
-Stash changes: 
+### Stash changes: 
 
 Stashing - a place where we can store changes temporally and not include them immediately in the commit - like a drawer to save them for later 
 It works in a similar way as the commits, as they are a snapshot of a change, but they don't have SHA value
@@ -156,19 +156,19 @@ The stashes are saved even if we leave the branch and return after a long time -
  -> git stash apply -->> an alternative to pop -> it leaves the stash and also applies it to the work dir 
  -> git stash drop stash@{n} -->> deleting the stash at position n -> to clear everything: git stash clear 
 
-Compare branches:
+### Compare branches:
  -> git diff branch..other_branch - compares the 2 branches - we can compare any branch to any other branch - the output will show the branches as a (branch) & b(other_branch)
  -> git diff --color-words branch..other_branch - can show the changes on 1 line
  -> git branch --merged || git branch --no-merged - checking which branches are fully included in the current (has been merged) || which are not part of the current (not merged)
  
-Rename branches:
+### Rename branches:
  -> git branch -m old_branch name new_branch_name (git branch --move is the same) - we can only put the new name: git branch -m new_name
  
-Delete branches:
+### Delete branches:
  -> git branch -d branch_name - to delete the branch (we need to be outside of the branch to be able to delete it)
  -> git branch -D branch_name - in case we want to delete a branch that has commits in it, but they are not merged to another branch or the master
  
-RESET BRANCHES:
+## RESET BRANCHES:
 
 Reset changes the files in the staging index and/or working directory to the state they had when a specified commit was made = MAKE MY PROJECT LOOK LIKE IT DID BACK THEN = Moves the HEAD pointer to a specific commit
 IMPORTANT: we can move back and forth in time using reset - just need to have the correct HEAD pointer
@@ -190,7 +190,7 @@ IMPORTANT: we can move back and forth in time using reset - just need to have th
 		EXAMLPLE: git reset --hard HEAD^ -->> will go back 1 commit - no changes in the staging area and no changes in the working directory 
 		MOST USEFUL: to make 1 branch to look exactly like another -->> on the current branch use: git reset --hard another_branch_name -->> the current branch will be the same as the another_branch_name
 
-MERGE BRANCHES:
+## MERGE BRANCHES:
 
 Once the branch is ready, we need to create a merge to take the branch and bring it to the master branch
 
@@ -202,33 +202,33 @@ Once the branch is ready, we need to create a merge to take the branch and bring
 	-->> from this point we can delete the branch or continue work on it
 	-->> good practice is to have a clean working directory before doing merges
 
-Fast-forward VS true merge:
+### Fast-forward VS true merge:
 
 -->> Fast-forward - when merging a branch that is ahead of the master - for example we branched off and worked on the branch only, but not on the master - 
 on merge, it will create a new HEAD pointer which will be the point of merging AKA fast-forward
 -->> Real merge (true merge/merge made by the 'recursive' strategy) - when we have commits to the master while working on the branch - 
 in that case git will create another commit after the last commit in the mster, that will join both branches together
 
-Merge conflicts:
+### Merge conflicts:
 
 Conflicts occur when there are 2 changes in the same line in 2 different commits - git gets 2 sets of instructions, so it does NOT know what to do - marks the conflict and waits for the user to fix it
 The conflicts will show up in the file in conflict with conflict markers: <<<<<<<HEAD (BEGINNING), ====== (PROBLEM), >>>>>>> (END)
 
-Resolve conflicts:
+### Resolve conflicts:
 
 1. Abort the merge: git merge --abort -->> it goes back before the merge attempts - changes are still in the branch like it was and master is the same as before issuing the merge command
 2. Resolve manually: find the code/text in conflict and correct the problems -->> useful commands git diff --color-words master..branch (to see the difference b/n the 2 branches in color) || git show --color-words
 	-->> find the conflicts, clear them, REMOVE THE MARKERS, git add file_with_conflicts, git commit -> will continue the merge process 
 3. Use the mergetool --> git help mergetool - for help -->> usually the changes are made manually or with a graphical interface, because it is easier
 
-Strategies to reduce conflicts:
+### Strategies to reduce conflicts:
  -> Keep lines short
  -> Keep commits small and focused 
  -> Beware stray edits to whitespace (spaces, tabs, line returns)
  -> Merge often - as much as you can
  -> Track changes to master - merging master into the branches - pull code from the master to the branches
 
-SET UP A REMOTE:
+## SET UP A REMOTE:
 
 The remotes work exactly the same as the local repo - has the HEAD, the commits ...
 On the first push, the local repo creates an additional origin/master branch (copy of the local master). After that, on every push it tries to keep it in sync with the master branch of the remote repo
@@ -237,38 +237,38 @@ IN FACT GIT DOESN'T COPY ALL THE COMMITS TO THE origin/master - instead it just 
 if the pointer of the remote master is ahead of the local master, on fetch the origin/master syncs (copies the commit locally) and then moves the origin/master to that point. 
 After that we need merge to move the HEAD pointer of the local master to the fetched commit (the place where the origin/master is pointing)
 
-Basically the process is:
+### Basically the process is:
 
 1. make commits locally
 2. fetch the lastest code from the remote server
 3. merge the new work into the updated code 
 4. merge with the remote master
  
-COLLABORATE WITH A REMOTE:
+## COLLABORATE WITH A REMOTE:
 
-Pushing code to the remote repo:
+### Pushing code to the remote repo:
  -> make changes -> add -> commit -> (to see the log: git log --oneline -5 origin/master(tracking branch for the remote branch = local)) -> git push origin master = git push (because usually the tracking is done by git)
 
-Getting code from the remote:
+### Getting code from the remote:
  -> git fetch -->> will sync the origin/master with remote master, but the master branch stays the same - it just fetches the changes - fetch often - no harm in doing it
  -> git merge origin/master -->> to merge the fetched changes into the local master -> will do a fast-forward -> the pointer HEAD will be moved to the same place as in the origin/master and remote master
  -> git fetch + git merge = git pull
 
-Delete a remote branch:
+### Delete a remote branch:
 There are 2 ways to do it:
 1. git push origin :name_of_the_branch -->> old style, used in rare cases
 2. git push origin --delete name_of_the_branch
  
-Enable collaborators:
+### Enable collaborators:
 For local projects (not open source) - go to the settings of the repo and add collaborators
 For open source - fork the project and work with pull requests
 
-Workflow:
-git checkout master
+### Workflow:
+**git checkout master
 git fetch
 git merge origin/master
 git checkout - b feedback_form
 git add feedback.html
 git commit -m "Add customer feedback form"
 git fetch
-git push -u origin feedback_form
+git push -u origin feedback_form**
