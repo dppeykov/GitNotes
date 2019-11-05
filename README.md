@@ -13,12 +13,12 @@
 
 ## BASIC COMMANDS:
 
-git help
-git config -->> to see the project info
-git config --global || git config --system -->> to change the global or system settings and values
+**git help**
+**git config** -->> to see the project info
+**git config --global || git config --system** -->> to change the global or system settings and values
 
-git config --global user.email "your@email.com"
-git config --global user.name "user name"
+> git config --global user.email "your@email.com"
+> git config --global user.name "user name"
 
 git init --> to initialize a git directory - gets everything ready to start tracking - usually in the root of the project - creates /.git + NOTE: The HEAD is not established after the init
 
@@ -50,7 +50,7 @@ git clone http://... -->> clone a repository (use when we don't have local repo)
 git branch -u origin/branch rem_branch -->> will track the local branches as well - the -u option tells git to automatically track the repository (-u = set upstream to) - most of the time git is taking care of this
 
 
-Create a new repo on the command line:
+### Create a new repo on the command line:
 
 echo "read me file" >> README.md
 git init
@@ -59,12 +59,12 @@ git commit -m "first commit"
 git remote add origin https://github.com/... (the repository location)
 git push -u origin master
 
-Push an existing repository:
+### Push an existing repository:
 
 git remote add origin https://github.com/... (the repository location)
 git push -u origin master  -->> pushes the local master branch to the remote master branch 
 
-Contribute to a project:
+### Contribute to a project:
 
 Fork the project: GUI
 Clone it to the local machine: git clone http://...
@@ -74,7 +74,7 @@ Add, commit and push to the remote: git -am "commit" + git push || git push orig
 Create a pull request (PR) - GUI - wait for it to be approved and merged to the original project or in case of conflicts, resolve them and then create new PR
 At this point you can delete the branch or continue with other changes
 
-NAVIGATE THE COMMIT TREE:
+## NAVIGATE THE COMMIT TREE:
 
 Tree-ish --> a directory containig files and other directories -> a commit is considered tree-ish because it refers to a tree at the point when a commit has been applied
 HEAD pointer -> reference of the tip of the current branch - a pointer where the branch state is - it moves with every commit in the branch - like an audio cassette recorder
@@ -260,14 +260,3 @@ git add feedback.html
 git commit -m "Add customer feedback form"
 git fetch
 git push -u origin feedback_form
-
-########################################################################################################################################
-End of the LinkedIn course
-########################################################################################################################################
- 
- 
- 
- 
- 
- 
- 
