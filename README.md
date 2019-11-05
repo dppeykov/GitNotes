@@ -64,17 +64,17 @@
 
 ### Create a new repo on the command line:
 
-echo "read me file" >> README.md
+`echo "read me file" >> README.md
 git init
 git add README.md
 git commit -m "first commit"
 git remote add origin https://github.com/... (the repository location)
-git push -u origin master
+git push -u origin master**`
 
 ### Push an existing repository:
 
-git remote add origin https://github.com/... (the repository location)
-git push -u origin master  -->> pushes the local master branch to the remote master branch 
+`git remote add origin https://github.com/... (the repository location)
+git push -u origin master  -->> pushes the local master branch to the remote master branch `
 
 ### Contribute to a project:
 
@@ -211,9 +211,11 @@ Once the branch is ready, we need to create a merge to take the branch and bring
 ![alt text](https://raw.githubusercontent.com/gitforteams/diagrams/master/balsamiq/merge-types.png "FF VS TM")
 
 ### Git rebase:
+
 > Rebase is another way to integrate changes from one branch to another. Rebase compresses all the changes into a single “patch.” Then it integrates the patch onto the target branch. Unlike merging, rebasing flattens the history because it transfers the completed work from one branch to another. In the process, unwanted history is eliminated.
 
 > **git checkout** feature
+
 > **git rebase** master
 
 ![alt text](https://hackernoon.com/hn-images/1*mgyl38slmqmcE4STS56nXA.gif "Git rebase")
