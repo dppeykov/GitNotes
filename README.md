@@ -6,10 +6,12 @@
 <----(git commit/checkout)----> **LOCAL REPO** (on push creates origin/master - origin/master = tracking)
 <----(git push(fetch+merge)/pull)---->  **REMOTE REPOSITORY** (GitHub Repo)
  
-NOTE: when doing a project we are working with the working directory directly, not the staging and the repository
+**NOTE**: *when doing a project we are working with the working directory directly, not the staging and the repository*
+
+![alt text](https://neurathsboat.blog/post/git-intro/featured.png "GitHub")
 
 
-BASIC COMMANDS:
+## BASIC COMMANDS:
 
 git help
 git config -->> to see the project info
