@@ -222,6 +222,9 @@ https://www.atlassian.com/git/tutorials/using-branches/git-merge
 
 ![alt text](https://hackernoon.com/hn-images/1*mgyl38slmqmcE4STS56nXA.gif "Git rebase")
 
+https://git-scm.com/book/en/v2/Git-Branching-Rebasing
+
+
 ### Merge conflicts:
 
 Conflicts occur when there are 2 changes in the same line in 2 different commits - git gets 2 sets of instructions, so it does NOT know what to do - marks the conflict and waits for the user to fix it
