@@ -202,6 +202,8 @@ Once the branch is ready, we need to create a merge to take the branch and bring
 	-->> from this point we can delete the branch or continue work on it
 	-->> good practice is to have a clean working directory before doing merges
 
+https://www.atlassian.com/git/tutorials/using-branches/git-merge
+
 ### Fast-forward VS true merge:
 
 > **Fast-forward** - when merging a branch that is **ahead of the master** - for example we branched off and worked on the branch only, but not on the master - on merge, it will create a **new HEAD pointer** which will be the point of merging AKA fast-forward
