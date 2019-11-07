@@ -99,7 +99,7 @@
 
 ### Ancestry:
  - commit's parents (**HEAD^ OR HEAD~1 (1 parent) = HEAD~**):
-   - example: **master^ = HEAD~** = the commit before the last in the master branch
+   - example: __master^ = HEAD~__ = the commit before the last in the master branch
  -> grandparents: HEAD^^ = HEAD~2 - example: git show HEAD^^
  -> for great-grandparents: HEAD^^^ = HEAD~3 - example: git show HEAD~3
  
