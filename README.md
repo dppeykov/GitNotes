@@ -98,10 +98,10 @@
 **git show HEAD** --> to see what is in this commit (HEAD = 4+ SHA-1 chars)
 
 ### Ancestry:
- - commit's parents (__HEAD^ OR HEAD~1 (1 parent) = HEAD~ __):
-   - example: __master^ = HEAD~__ = the commit before the last in the master branch
- -> grandparents: HEAD^^ = HEAD~2 - example: git show HEAD^^
- -> for great-grandparents: HEAD^^^ = HEAD~3 - example: git show HEAD~3
+ - commit's parents (HEAD^ OR HEAD~1 (1 parent) = HEAD~):
+   - example: master^ = HEAD~ = the commit before the last in the master branch
+   - grandparents: HEAD^^ = HEAD~2 - example: git show HEAD^^
+   - for great-grandparents: HEAD^^^ = HEAD~3 - example: git show HEAD~3
  
 Tree listings:
  -> git ls-tree tree-ish --> lists the content of a tree object == ls -a in Lunux - example: git ls-tree HEAD -> lists blobs (binary large object = files) and trees (directories)
