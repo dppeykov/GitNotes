@@ -94,11 +94,12 @@
 > **HEAD pointer** - reference of the tip of the current branch (a pointer where the branch state is)
 > The HEAD **moves with every commit** in the branch - like an audio cassette recorder
 
-git log --> shows the where the HEAD is pointing (to which SHA-1) - every commit gets SHA-1 identifier for tracking (40 chars - we need 4 of them to use it)
-git show HEAD --> to see what is in this commit (HEAD = 4+ SHA-1 chars)
+**git log** --> shows where the HEAD is pointing (to which SHA-1) - every commit gets SHA-1 identifier for tracking (40 chars - we need 4 of them minimum to use it)
+**git show HEAD** --> to see what is in this commit (HEAD = 4+ SHA-1 chars)
 
-Ancestry:
- -> commit's parents (HEAD^ OR HEAD~1 (1 parent) = HEAD~) - example: master^ = HEAD~ = the commit before the last in the master branch
+### Ancestry:
+ - commit's parents (**HEAD^ OR HEAD~1 (1 parent) = HEAD~**):
+   - example: **master^ = HEAD~** = the commit before the last in the master branch
  -> grandparents: HEAD^^ = HEAD~2 - example: git show HEAD^^
  -> for great-grandparents: HEAD^^^ = HEAD~3 - example: git show HEAD~3
  
