@@ -88,8 +88,11 @@
 
 ## NAVIGATE THE COMMIT TREE:
 
-Tree-ish --> a directory containig files and other directories -> a commit is considered tree-ish because it refers to a tree at the point when a commit has been applied
-HEAD pointer -> reference of the tip of the current branch - a pointer where the branch state is - it moves with every commit in the branch - like an audio cassette recorder
+> **Tree-ish** - a directory containig files and other directories 
+> A commit is considered tree-ish because it refers to a tree at the point when a commit has been applied
+
+> **HEAD pointer** - reference of the tip of the current branch (a pointer where the branch state is)
+> The HEAD **moves with every commit** in the branch - like an audio cassette recorder
 
 git log --> shows the where the HEAD is pointing (to which SHA-1) - every commit gets SHA-1 identifier for tracking (40 chars - we need 4 of them to use it)
 git show HEAD --> to see what is in this commit (HEAD = 4+ SHA-1 chars)
