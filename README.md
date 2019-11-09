@@ -103,7 +103,7 @@
    - grandparents: HEAD^^ = HEAD~2 - example: git show HEAD^^
    - for great-grandparents: HEAD^^^ = HEAD~3 - example: git show HEAD~3
  
-Tree listings:
+**Tree listings**:
  -> git ls-tree tree-ish --> lists the content of a tree object == ls -a in Lunux - example: git ls-tree HEAD -> lists blobs (binary large object = files) and trees (directories)
  
 Filter the commit log:
