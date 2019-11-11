@@ -256,7 +256,7 @@ The remotes work exactly the same as the local repo - has the HEAD, the commits 
  - If the remote master has changes that are not in the local, we can use **fetch** to sync the origin/master, but this won't be in the local master - to have it there we need to use **merge**
 
 > IN FACT GIT DOESN'T COPY ALL THE COMMITS TO THE origin/master - instead it just keep a reference point (a HEAD) to the last synched commit:
- - if the pointer of the remote master is ahead of the local master, on fetch the origin/master syncs (copies the commit locally) and then moves the origin/master to that point. 
+> - if the pointer of the remote master is ahead of the local master, on fetch the origin/master syncs (copies the commit locally) and then moves the origin/master to that point. 
 
  - After that we need merge to move the HEAD pointer of the local master to the fetched commit (the place where the origin/master is pointing)
 
