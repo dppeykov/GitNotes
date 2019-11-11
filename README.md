@@ -261,6 +261,8 @@ The remotes work exactly the same as the local repo - has the HEAD, the commits 
 > - if the pointer of the remote master is ahead of the local master, on fetch the origin/master syncs (copies the commit locally) and then moves the origin/master to that point. 
 
  - After that we need merge to move the HEAD pointer of the local master to the fetched commit (the place where the origin/master is pointing)
+ 
+![alt text](http://www-creators.com/wp-content/uploads/2017/05/Screen-Shot-2017-05-25-at-17.27.15.png "git pull = fetch + merge")
 
 ### Basically the process is:
 
