@@ -174,15 +174,23 @@ The stashes are saved even if we leave the branch and return after a long time -
  
 ## RESET BRANCHES:
 
-Reset changes the files in the staging index and/or working directory to the state they had when a specified commit was made = MAKE MY PROJECT LOOK LIKE IT DID BACK THEN = Moves the HEAD pointer to a specific commit
-IMPORTANT: we can move back and forth in time using reset - just need to have the correct HEAD pointer
-3 Types - git reset --soft|mixed|hard: 
-	-->> --soft (moves the HEAD, no changes to the staging or work dir) - return to an old state, but leave the code changes staged (not commited yet) - similar to git commit -amend
-	
-		EXAMPLE: we are doing 2 changes in separate bundles - commit A + commit B, then we want to revert back and combine them in 1 single commit - soft reset is a good option:
-				 git reset --soft HEAD^^ -->> will go back 2 commits and put all the changes (A & B) in the staging area (rolls them back), ready to be commited again =>
-				 => the commits are there, but the HEAD is moved to a point before they exist - if we start -am again this will abandon the A & B commits and they wouldn't be reachable anymore
-		MOST USEFUL: to go back in time and combine more separate commits into 1
+> Reset changes the files in the staging index and/or working directory to the state they had when a specified commit was made = MAKE MY PROJECT LOOK LIKE IT DID BACK THEN = **Moves the HEAD pointer to a specific commit**
+
+**IMPORTANT: we can move back and forth in time using reset - just need to have the correct HEAD pointer**
+
+ - **3 Types** = **git reset** *--soft|mixed|hard*: 
+ 	-  **--soft (moves the HEAD, no changes to the staging or work dir)** - return to an old state, but leave the code changes staged (not commited yet) - similar to **git commit -amend**	
+
+> **EXAMPLE**: 
+
+We are doing 2 changes in separate bundles - 
+ - commit A + commit B, 
+ - then we want to revert back and combine them in 1 single commit 
+ - soft reset is a good option:
+ 	- **git reset --soft HEAD^^** = will go back 2 commits and put all the changes (A & B) in the staging area (rolls them back), ready to be commited again =>
+	- the commits are there, but the HEAD is moved to a point before they exist - if we start -am again this will abandon the A & B commits and they wouldn't be reachable anymore
+
+> **MOST USEFUL**: to go back in time and combine more separate commits into 1
 				 
 	-->> --mixed (moves the HEAD, changes the staging index but not the work dir) - the default setting - git reset --mixed = git reset -->> leaves code changes in the working directory - previous commits will be discarded
 	
